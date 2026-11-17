@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>写给一起跨入 2.0 时代的我们</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ede6da;color:#332820;font-family:"Noto Serif SC","Songti SC",SimSun,serif}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 20%,#fff8e8a8,transparent 70%);z-index:-1}.cover{min-height:100svh;display:grid;place-content:center;justify-items:center;text-align:center;padding:48px 20px}.eyebrow{font:500 12px system-ui;letter-spacing:.36em;color:#775440}h1{font-size:clamp(24px,5vw,43px);font-weight:600;letter-spacing:.07em;line-height:1.5;margin:14px 0 34px}.envelope{width:min(350px,79vw);aspect-ratio:1.58;position:relative;background:#d8baa0;border:1px solid #ab856b;border-radius:4px;box-shadow:0 25px 60px #62422b35;cursor:pointer;color:#fff3dc;margin-bottom:25px}.envelope:before,.envelope:after{content:"";position:absolute;inset:0;pointer-events:none}.envelope:before{background:#e5cdb8;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}.envelope:after{height:65%;background:linear-gradient(#e8d2bc,#cda68a);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .45s}.envelope:hover:after,.envelope:focus-visible:after{transform:rotateX(22deg)}.seal{position:absolute;z-index:1;top:58%;left:50%;transform:translate(-50%,-50%) rotate(-9deg);display:grid;place-items:center;width:57px;height:57px;border-radius:46% 55% 51% 44%;background:#71352f;border:4px double #ae7160;box-shadow:0 3px 8px #52252377;font-size:20px}.open-label{font:14px system-ui;color:#6a4537;letter-spacing:.2em}.paper{width:min(800px,calc(100% - 26px));margin:40px auto;background:#fcf8ee;padding:clamp(24px,7vw,80px);border:1px solid #dacaba;box-shadow:0 12px 60px #62422b19}.paper h1{font-size:clamp(24px,5vw,37px);margin-bottom:36px}.paper p{font-size:clamp(17px,2.7vw,20px);line-height:2.05;margin:0 0 1.3em}.paper .emphasis{border-left:2px solid #a86250;padding:3px 0 3px 18px;color:#703d30;font-weight:700}.signature{text-align:right;margin-top:40px}.back{border:1px solid #aa8e7b;background:transparent;color:#684334;padding:8px 16px;border-radius:3px;cursor:pointer}.envelope:focus-visible,.back:focus-visible{outline:3px solid #71352f;outline-offset:5px}[hidden]{display:none}
+/* Open letter */
+.paper {
+  position: relative;
+  width: min(820px, calc(100% - 28px));
+  margin: clamp(14px, 5vw, 60px) auto;
+  padding: clamp(40px, 9vw, 96px) clamp(30px, 10vw, 108px);
+  background: radial-gradient(ellipse at 22% 0%, #fffdf7, transparent 64%), #faf4e9;
+  border: 1px solid #d8c8af;
+  box-shadow: 0 3px 0 #e1d1b8, 0 7px 0 -2px #f6e9d7, 0 24px 58px #54382126;
+}
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 3px double #bca381;
+  pointer-events: none;
+}
+.paper h1 {
+  margin: 0 0 clamp(26px, 6vw, 52px);
+  color: #39291f;
+  font-size: clamp(25px, 5vw, 40px);
+  letter-spacing: .045em;
+  text-wrap: balance;
+}
+.paper h1::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 1px;
+  margin-top: 22px;
+  background: #a27851;
+}
+.paper p { line-height: 1.95; color: #43362d; }
+.paper .emphasis {
+  margin: 1.65em 0;
+  padding: .85em 1em;
+  border-left: 2px solid #86574a;
+  background: #a66f4310;
+  color: #663a31;
+}
+.signature { margin-top: 52px; }
+.signature p { margin: 0 0 .35em; }
+.signature strong { font-size: 1.42em; letter-spacing: .16em; color: #71352f; }
+.paper .back { margin-top: 24px; }
+@media (max-width: 480px) {
+  .paper::before { inset: 7px; }
+  .paper p { line-height: 1.85; }
+}
+</style>
+<section class="cover" id="cover"><p class="eyebrow">致各位运营主管</p><h1>写给一起跨入 2.0 时代的我们</h1><button class="envelope" id="open" aria-label="拆开信封" aria-controls="letter"><span class="seal" aria-hidden="true">漆</span></button><span class="open-label" aria-hidden="true">轻触信封 · 展信</span></section>
+<main class="paper" id="letter" hidden><h1 tabindex="-1">写给一起跨入 2.0 时代的我们</h1>
+<p>亲爱的朋友们，好久不见。</p>
+<p>展信佳。</p>
+<p>最近，我看到越来越多主播勇敢地走到销售一线，从镜头前走向客户身边，主动接触客户、了解需求、参与沟通和谈单，并努力把流量和线索转化为真实的成交，最终靠自己的行动拿到了属于自己的结果。</p>
+<p>看到这些变化，我也一直在和领导讨论：新媒体从 1.0 走向 2.0，到底意味着什么？</p>
+<p>如果说 1.0 阶段，我们更多关注的是流量、曝光和线索，那么到了 2.0，我觉得需要再往前走一步：不只是让更多人看到我们的内容，还要思考这些内容能不能帮助门店成交，能不能真正为业务带来订单。</p>
+<p>这段时间有一件小事，让我对这件事有了更具体的感受。</p>
+<p>为了写一篇更真实的新车种草内容，我带了饮料去门店，找前台的销售聊了聊。我想知道客户买车时会关心什么、购车过程中有哪些顾虑、实际成交时又会遇到什么问题。刚开始也不是一聊就有收获，来来回回聊了好几轮，才慢慢找到一位特别愿意分享的销售。</p>
+<p>因为平时也会参加销售夕会，大家对我比较熟悉，后面沟通就自然了很多。更让我意外的是，后来这位销售还会主动跟我说，客户在小红书上看到了什么评价、最近大家在讨论什么、有哪些舆情反馈。这些信息让我更快地听见真实的消费者声音，也让内容创作和舆情判断有了更贴近一线的依据。</p>
+<p class="emphasis">门店不再只是等着我们去要素材的地方，也可以成为主动提供内容灵感、客户反馈和业务信息的伙伴。</p>
+<p>所以我越来越觉得，新媒体不能只在直播间收线索、在办公室里研究选题，也需要多走到业务一线，多和门店、销售建立联系。很多真实的购车顾虑、客户反馈和成交细节，其实都在他们身边。关系熟悉了，沟通顺畅了，信息也会自然流动起来。</p>
+<p>当然，关注订单，并不意味着我们就不看流量了。只是流量不应该是终点。我们还需要继续看线索背后的那些真实客户：我们的内容有没有触达到他们，有没有回应他们的需求，又有没有机会推动业务向前一步。</p>
+<p class="emphasis">我们最终想要的，不只是发布了多少条视频、多少篇笔记，收了多少线索，而是这些工作能不能真正转化成业务价值，能不能拿到订单，最终拿到属于我们的结果。</p>
+<p>这也是我最近的一点体会，分享给大家。之后也希望我们能多交流、多碰撞，一起把内容做得更贴近客户，真正走进客户，也更贴近业务。</p>
+<div class="signature"><p>和大家共勉，</p><p><strong>小漆</strong></p></div><button class="back" id="close">收起信纸</button></main>
+<noscript><style>#cover{display:none}#letter[hidden]{display:block}#close{display:none}</style></noscript>
+<script>
+const cover = document.querySelector('#cover');
+const letter = document.querySelector('#letter');
+const openButton = document.querySelector('#open');
+openButton.addEventListener('click', () => {
+  cover.hidden = true;
+  letter.hidden = false;
+  window.scrollTo(0, 0);
+  letter.querySelector('h1').focus({ preventScroll: true });
+});
+document.querySelector('#close').addEventListener('click', () => {
+  letter.hidden = true;
+  cover.hidden = false;
+  window.scrollTo(0, 0);
+  openButton.focus({ preventScroll: true });
+});
+</script></html>
