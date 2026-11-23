@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>战书 · 三种呈现预览</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101011;color:#eee9df;font-family:system-ui,"Microsoft YaHei",sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #d8b870;outline-offset:5px}
+header{padding:22px 5vw;border-bottom:1px solid #ffffff18;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}header strong{font-weight:500;font-size:14px;letter-spacing:.1em}header span{font-size:12px;color:#b7b2a8}
+nav{display:flex;gap:8px;justify-content:center;padding:24px 12px;flex-wrap:wrap}nav button{border:1px solid #ffffff23;background:transparent;color:#a9a59d;border-radius:30px;padding:11px 19px;font-size:13px}nav button[aria-selected=true]{background:#e7d9bb;color:#242019;border-color:#e7d9bb}
+.stage{min-height:calc(100svh - 152px);padding:20px 24px 70px;display:flex;align-items:center;flex-direction:column;justify-content:center;overflow:hidden}.hint{margin:25px 0 0;color:#c2b9a9;font-size:12px;letter-spacing:.12em;text-align:center}.version-label{font-size:11px;letter-spacing:.24em;margin-bottom:28px;color:#b7a780}.wrap{width:min(620px,100%);perspective:1400px}
+.cover{position:relative;width:100%;min-height:345px;border:1px solid #867044;background:linear-gradient(145deg,#292727,#121212 70%);box-shadow:0 32px 100px #0009;color:#d6bd82;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 20px;isolation:isolate;transition:transform .7s,opacity .6s}.cover::before{content:"";position:absolute;inset:14px;border:1px solid #b393513b;pointer-events:none}.flap{position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,#3d3730,#191819);clip-path:polygon(0 0,100% 0,50% 53%);transform-origin:top;transition:transform .6s}.cover .recipient{font:12px system-ui;letter-spacing:.3em;margin:0 0 24px}.cover h1{font:600 clamp(72px,16vw,116px)/1.1 "Songti SC",SimSun,serif;letter-spacing:.2em;margin:0 0 25px;padding-left:.2em;text-shadow:0 1px #f5e2b6,0 -1px #000}.seal{width:61px;height:61px;background:#8c302a;border:4px double #c87961;color:#e4bd98;display:grid;place-items:center;font:30px SimSun;transform:rotate(-8deg);box-shadow:0 4px 10px #0005;transition:transform .5s,opacity .5s}.open-button{background:none;border:0;color:inherit;margin-top:22px;font-size:12px;letter-spacing:.22em;padding:10px 20px}.opening .flap{transform:rotateX(160deg)}.opening .seal{transform:translateY(20px) rotate(15deg);opacity:0}.opening.cover{transform:translateY(-15px);opacity:0}
+.paper{position:relative;background:#eee8da;color:#28241e;width:100%;padding:50px clamp(25px,7vw,64px);box-shadow:0 20px 80px #0008;animation:reveal .65s both}.paper::before{content:"";position:absolute;inset:12px;border:3px double #a78e5c88;pointer-events:none}.paper .topline{font-size:10px;letter-spacing:.22em;color:#796b50;border-bottom:1px solid #b9aa8c;padding-bottom:18px;margin-bottom:32px}.paper h2{font:600 clamp(32px,7vw,47px)/1.3 SimSun,serif;letter-spacing:.12em;margin:0 0 30px}.paper p{font:17px/1.9 "Songti SC",SimSun,serif;margin:0 0 24px}.placeholder{border:1px dashed #a6977a;padding:25px 18px;margin:30px 0;color:#776c5b;text-align:center}.placeholder strong{font-size:14px;font-weight:400}.placeholder p{font:13px/1.8 system-ui;margin:12px 0 0}.lines{height:55px;margin-top:20px;background:repeating-linear-gradient(transparent 0 17px,#998b701d 17px 18px)}.footer{display:flex;justify-content:flex-end;margin-top:35px}.footer .seal{width:49px;height:49px;font-size:24px;box-shadow:none}.close{display:block;margin:27px auto 0;background:transparent;border:1px solid #b6a584;padding:9px 20px;color:#675a45;font-size:12px}.tag{display:inline-block;color:#8c302a;font:12px system-ui;margin-bottom:15px}
+.red-stage{background:radial-gradient(ellipse at top,#52211b,#20110f 70%)}.red-stage .version-label{color:#d9ad7c}.scroll-cover{min-height:385px;border:0;background:linear-gradient(90deg,#6e1818,#a2342b 18%,#8b2724 80%,#541417);color:#ead9b7;width:90%;margin:auto;box-shadow:18px 20px 65px #0008,-18px 20px 65px #0008}.scroll-cover::before{border:1px solid #d9b88588;inset:23px 15px}.scroll-cover::after{content:"";position:absolute;left:-13px;right:-13px;top:-13px;height:24px;border-radius:15px;background:linear-gradient(#bea178,#ead8a8 40%,#9a744d);box-shadow:0 383px #a5875f}.scroll-cover h1{font-size:88px;writing-mode:vertical-rl;letter-spacing:.15em;padding-left:0;margin:0 0 20px}.scroll-cover .recipient{margin-bottom:22px}.scroll-cover .seal{background:#e2c89e;color:#842d26;border-color:#9c4536;width:45px;height:45px;font-size:23px;position:absolute;right:35px;bottom:55px}.red-paper{background:#f3e6ce;border-top:8px solid #8e3128;border-bottom:8px solid #8e3128}.red-paper h2{color:#8b2923}.red-paper::before{border-color:#9c453655}.red-paper .topline{color:#8f382b}
+.file-stage{background:radial-gradient(ellipse at center,#31383d,#121719 75%)}.file-stage .version-label{font-family:monospace;color:#a0b3b6}.folder{min-height:360px;background:linear-gradient(120deg,#454d50,#2b3337);border:1px solid #728084;color:#e1e8e5;align-items:flex-start;padding:48px 40px;clip-path:polygon(0 0,34% 0,40% 19px,100% 19px,100% 100%,0 100%)}.folder::before{inset:35px 18px 18px;border-color:#9bb1b52b}.folder .recipient{letter-spacing:.14em;margin:15px 0 30px}.folder h1{font-family:system-ui;font-size:clamp(60px,12vw,91px);font-weight:900;letter-spacing:-.05em;margin:0;padding:0}.folder .stamp{position:absolute;right:24px;top:90px;border:1px solid #9fb4b1;padding:8px 11px;font:11px monospace;letter-spacing:.1em;color:#b6c5bf;transform:rotate(90deg);transform-origin:70% 50%}.folder .stripe{height:18px;width:100%;background:repeating-linear-gradient(120deg,#c66d46 0 9px,#b1a993 9px 18px);margin:24px 0 5px;opacity:.8}.folder .open-button{padding-left:0}.file-paper{background:#e8ece7;font-family:system-ui;border-top:5px solid #ad6747}.file-paper::before{border:1px solid #a2afab}.file-paper h2{font-family:system-ui;font-weight:800;letter-spacing:-.03em}.file-paper p{font-family:system-ui}.file-paper .tag{color:#795039}.file-paper .placeholder{border-color:#a2afab}.file-paper .footer span{font:12px monospace;color:#69766f}
+[hidden]{display:none!important}@keyframes reveal{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}@media(max-width:520px){header{justify-content:center}header span{width:100%;text-align:center}.stage{padding:20px 22px 55px}.cover{min-height:310px}.scroll-cover{min-height:360px}.scroll-cover::after{box-shadow:0 358px #a5875f}.folder{padding:42px 27px}.folder .stamp{right:4px;top:80px}nav{padding:18px 9px;gap:6px}nav button{padding:10px 12px;font-size:12px}.paper{padding-top:40px}.version-label{margin-bottom:22px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><strong>战书呈现 · 方向预览</strong><span>仅作视觉比较 · 正文待讨论</span></header>
+<nav role="tablist" aria-label="选择战书风格">
+<button role="tab" id="tab-gold" aria-controls="gold" aria-selected="true">黑金军令状</button>
+<button role="tab" id="tab-red" aria-controls="red" aria-selected="false" tabindex="-1">朱红长卷</button>
+<button role="tab" id="tab-file" aria-controls="file" aria-selected="false" tabindex="-1">金属任务档案</button>
+</nav>
+<section id="gold" role="tabpanel" aria-labelledby="tab-gold" class="stage">
+<div class="version-label">黑金封套 / 朱红封印</div><div class="wrap">
+<div class="cover"><div class="flap"></div><p class="recipient">致全体运营伙伴</p><h1>战书</h1><div class="seal" aria-hidden="true">战</div><button class="open-button">启封战书 ↗</button></div>
+<article class="paper" hidden><div class="topline">致全体运营伙伴</div><span class="tag">呈现样稿</span><h2 tabindex="-1">战书</h2><p>各位运营伙伴：</p><div class="placeholder"><strong>这里将放入讨论确认后的正文</strong><p>预览阅读区的字体、留白与重点样式。</p><div class="lines" aria-hidden="true"></div></div><div class="footer"><span class="seal" aria-hidden="true">战</span></div><button class="close">重新启封</button></article></div><p class="hint">轻触启封 · 沉稳、郑重、有分量</p></section>
+<section id="red" role="tabpanel" aria-labelledby="tab-red" class="stage red-stage" hidden>
+<div class="version-label">朱红长卷 / 厚纸内页</div><div class="wrap">
+<div class="cover scroll-cover"><p class="recipient">致全体运营伙伴</p><h1>战书</h1><div class="seal" aria-hidden="true">战</div><button class="open-button">展开战书 ↓</button></div>
+<article class="paper red-paper" hidden><div class="topline">致全体运营伙伴</div><span class="tag">呈现样稿</span><h2 tabindex="-1">战书</h2><p>各位运营伙伴：</p><div class="placeholder"><strong>这里将放入讨论确认后的正文</strong><p>预览长卷展开后的阅读感与朱红重点。</p><div class="lines" aria-hidden="true"></div></div><div class="footer"><span class="seal" aria-hidden="true">战</span></div><button class="close">重新展开</button></article></div><p class="hint">展开长卷 · 热烈、鲜明、有动员感</p></section>
+<section id="file" role="tabpanel" aria-labelledby="tab-file" class="stage file-stage" hidden>
+<div class="version-label">金属灰档案 / 铜色封条</div><div class="wrap">
+<div class="cover folder"><p class="recipient">致全体运营伙伴</p><span class="stamp">待启封</span><h1>战书</h1><div class="stripe" aria-hidden="true"></div><button class="open-button">开启任务档案 →</button></div>
+<article class="paper file-paper" hidden><div class="topline">致全体运营伙伴</div><span class="tag">呈现样稿</span><h2 tabindex="-1">战书</h2><p>各位运营伙伴：</p><div class="placeholder"><strong>这里将放入讨论确认后的正文</strong><p>预览现代文书的层级、对比与执行感。</p><div class="lines" aria-hidden="true"></div></div><div class="footer"><span>落款位置 · 待确认</span></div><button class="close">重新开启</button></article></div><p class="hint">开启档案 · 现代、干练、有执行感</p></section>
+<script>
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+function selectTab(tab) {
+  tabs.forEach(item => {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+  });
+}
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectTab(tab));
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next === undefined) return;
+    event.preventDefault();
+    selectTab(tabs[next]);
+    tabs[next].focus();
+  });
+});
+document.querySelectorAll('[role="tabpanel"]').forEach(panel => {
+  const cover = panel.querySelector('.cover');
+  const paper = panel.querySelector('.paper');
+  const button = panel.querySelector('.open-button');
+  button.addEventListener('click', () => {
+    button.disabled = true;
+    cover.classList.add('opening');
+    window.setTimeout(() => {
+      cover.hidden = true;
+      paper.hidden = false;
+      paper.querySelector('h2').focus({ preventScroll: true });
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500);
+  });
+  panel.querySelector('.close').addEventListener('click', () => {
+    paper.hidden = true;
+    cover.hidden = false;
+    cover.classList.remove('opening');
+    button.disabled = false;
+    button.focus({ preventScroll: true });
+  });
+});
+</script></body></html>
