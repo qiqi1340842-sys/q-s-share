@@ -27,6 +27,23 @@ nav{display:flex;gap:8px;justify-content:center;padding:24px 12px;flex-wrap:wrap
 #red .scroll-cover{transition:transform .45s,opacity .45s,filter .45s}
 #red .scroll-cover.opening{transform:scaleX(.96) scaleY(.08);filter:brightness(1.4);opacity:0}
 
+
+/* Moving diagonal band on the task folder */
+.folder .stripe {
+  background: repeating-linear-gradient(120deg, #c66d46 0 9px, #b1a993 9px 18px);
+  background-size: 42px 100%;
+  animation: task-band-flow 1.4s linear infinite;
+}
+.folder.opening .stripe {
+  animation-duration: .35s;
+}
+@keyframes task-band-flow {
+  from { background-position: 0 0; }
+  to { background-position: 42px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folder .stripe { animation: none; }
+}
 </style>
 </head>
 <body>
