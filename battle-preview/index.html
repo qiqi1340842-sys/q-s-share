@@ -13,6 +13,20 @@ nav{display:flex;gap:8px;justify-content:center;padding:24px 12px;flex-wrap:wrap
 .red-stage{background:radial-gradient(ellipse at top,#52211b,#20110f 70%)}.red-stage .version-label{color:#d9ad7c}.scroll-cover{min-height:385px;border:0;background:linear-gradient(90deg,#6e1818,#a2342b 18%,#8b2724 80%,#541417);color:#ead9b7;width:90%;margin:auto;box-shadow:18px 20px 65px #0008,-18px 20px 65px #0008}.scroll-cover::before{border:1px solid #d9b88588;inset:23px 15px}.scroll-cover::after{content:"";position:absolute;left:-13px;right:-13px;top:-13px;height:24px;border-radius:15px;background:linear-gradient(#bea178,#ead8a8 40%,#9a744d);box-shadow:0 383px #a5875f}.scroll-cover h1{font-size:88px;writing-mode:vertical-rl;letter-spacing:.15em;padding-left:0;margin:0 0 20px}.scroll-cover .recipient{margin-bottom:22px}.scroll-cover .seal{background:#e2c89e;color:#842d26;border-color:#9c4536;width:45px;height:45px;font-size:23px;position:absolute;right:35px;bottom:55px}.red-paper{background:#f3e6ce;border-top:8px solid #8e3128;border-bottom:8px solid #8e3128}.red-paper h2{color:#8b2923}.red-paper::before{border-color:#9c453655}.red-paper .topline{color:#8f382b}
 .file-stage{background:radial-gradient(ellipse at center,#31383d,#121719 75%)}.file-stage .version-label{font-family:monospace;color:#a0b3b6}.folder{min-height:360px;background:linear-gradient(120deg,#454d50,#2b3337);border:1px solid #728084;color:#e1e8e5;align-items:flex-start;padding:48px 40px;clip-path:polygon(0 0,34% 0,40% 19px,100% 19px,100% 100%,0 100%)}.folder::before{inset:35px 18px 18px;border-color:#9bb1b52b}.folder .recipient{letter-spacing:.14em;margin:15px 0 30px}.folder h1{font-family:system-ui;font-size:clamp(60px,12vw,91px);font-weight:900;letter-spacing:-.05em;margin:0;padding:0}.folder .stamp{position:absolute;right:24px;top:90px;border:1px solid #9fb4b1;padding:8px 11px;font:11px monospace;letter-spacing:.1em;color:#b6c5bf;transform:rotate(90deg);transform-origin:70% 50%}.folder .stripe{height:18px;width:100%;background:repeating-linear-gradient(120deg,#c66d46 0 9px,#b1a993 9px 18px);margin:24px 0 5px;opacity:.8}.folder .open-button{padding-left:0}.file-paper{background:#e8ece7;font-family:system-ui;border-top:5px solid #ad6747}.file-paper::before{border:1px solid #a2afab}.file-paper h2{font-family:system-ui;font-weight:800;letter-spacing:-.03em}.file-paper p{font-family:system-ui}.file-paper .tag{color:#795039}.file-paper .placeholder{border-color:#a2afab}.file-paper .footer span{font:12px monospace;color:#69766f}
 [hidden]{display:none!important}@keyframes reveal{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}@media(max-width:520px){header{justify-content:center}header span{width:100%;text-align:center}.stage{padding:20px 22px 55px}.cover{min-height:310px}.scroll-cover{min-height:360px}.scroll-cover::after{box-shadow:0 358px #a5875f}.folder{padding:42px 27px}.folder .stamp{right:4px;top:80px}nav{padding:18px 9px;gap:6px}nav button{padding:10px 12px;font-size:12px}.paper{padding-top:40px}.version-label{margin-bottom:22px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Rolling scroll */
+#red .scroll-shell{position:relative;width:100%;overflow:visible;margin:22px 0}
+#red .scroll-shell[hidden]{display:none}
+#red .red-paper{animation:none;margin:0;border-top:0;border-bottom:0;background:linear-gradient(90deg,#cbb48b55,transparent 9%,transparent 91%,#cbb48b55),#f3e6ce}
+#red .roller{position:absolute;left:-15px;right:-15px;height:25px;border-radius:14px;z-index:3;pointer-events:none;background:linear-gradient(#65432c 0%,#c5a273 18%,#f3dfad 40%,#b18650 67%,#5a3a25 100%);box-shadow:0 5px 13px #0006}
+#red .roller::before,#red .roller::after{content:"";position:absolute;top:-4px;width:11px;height:33px;border-radius:5px;background:linear-gradient(90deg,#5e3924,#ddbb7e,#634128)}
+#red .roller::before{left:-4px}#red .roller::after{right:-4px}
+#red .roller.top{top:-12px}#red .roller.bottom{bottom:-12px}
+#red .scroll-shell.is-moving .red-paper::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#49331c55,transparent 22%,transparent 76%,#49331c66)}
+#red .close{position:relative;z-index:4}
+#red .scroll-cover{transition:transform .45s,opacity .45s,filter .45s}
+#red .scroll-cover.opening{transform:scaleX(.96) scaleY(.08);filter:brightness(1.4);opacity:0}
+
 </style>
 </head>
 <body>
@@ -29,7 +43,7 @@ nav{display:flex;gap:8px;justify-content:center;padding:24px 12px;flex-wrap:wrap
 <section id="red" role="tabpanel" aria-labelledby="tab-red" class="stage red-stage" hidden>
 <div class="version-label">朱红长卷 / 厚纸内页</div><div class="wrap">
 <div class="cover scroll-cover"><p class="recipient">致全体运营伙伴</p><h1>战书</h1><div class="seal" aria-hidden="true">战</div><button class="open-button">展开战书 ↓</button></div>
-<article class="paper red-paper" hidden><div class="topline">致全体运营伙伴</div><span class="tag">呈现样稿</span><h2 tabindex="-1">战书</h2><p>各位运营伙伴：</p><div class="placeholder"><strong>这里将放入讨论确认后的正文</strong><p>预览长卷展开后的阅读感与朱红重点。</p><div class="lines" aria-hidden="true"></div></div><div class="footer"><span class="seal" aria-hidden="true">战</span></div><button class="close">重新展开</button></article></div><p class="hint">展开长卷 · 热烈、鲜明、有动员感</p></section>
+<div class="scroll-shell" hidden><div class="roller top" aria-hidden="true"></div><article class="paper red-paper"><div class="topline">致全体运营伙伴</div><span class="tag">呈现样稿</span><h2 tabindex="-1">战书</h2><p>各位运营伙伴：</p><div class="placeholder"><strong>这里将放入讨论确认后的正文</strong><p>预览长卷展开后的阅读感与朱红重点。</p><div class="lines" aria-hidden="true"></div></div><div class="footer"><span class="seal" aria-hidden="true">战</span></div><button class="close">卷起战书</button></article><div class="roller bottom" aria-hidden="true"></div></div></div><p class="hint">展开长卷 · 热烈、鲜明、有动员感</p></section>
 <section id="file" role="tabpanel" aria-labelledby="tab-file" class="stage file-stage" hidden>
 <div class="version-label">金属灰档案 / 铜色封条</div><div class="wrap">
 <div class="cover folder"><p class="recipient">致全体运营伙伴</p><span class="stamp">待启封</span><h1>战书</h1><div class="stripe" aria-hidden="true"></div><button class="open-button">开启任务档案 →</button></div>
@@ -62,6 +76,61 @@ document.querySelectorAll('[role="tabpanel"]').forEach(panel => {
   const cover = panel.querySelector('.cover');
   const paper = panel.querySelector('.paper');
   const button = panel.querySelector('.open-button');
+  if (panel.id === 'red') {
+    const shell = panel.querySelector('.scroll-shell');
+    const closeButton = panel.querySelector('.close');
+    const contents = Array.from(paper.children);
+    const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let busy = false;
+    button.addEventListener('click', async () => {
+      if (busy) return;
+      busy = true;
+      button.disabled = true;
+      cover.classList.add('opening');
+      if (!reduced()) await new Promise(resolve => window.setTimeout(resolve, 450));
+      cover.hidden = true;
+      shell.hidden = false;
+      shell.classList.add('is-moving');
+      const height = shell.getBoundingClientRect().height;
+      shell.style.overflow = 'hidden';
+      const roll = shell.animate([
+        { height: '26px', opacity: 0.7 },
+        { height: height + 'px', opacity: 1 }
+      ], { duration: reduced() ? 0 : 1700, easing: 'cubic-bezier(.22,.7,.2,1)', fill: 'both' });
+      contents.forEach((element, index) => element.animate([
+        { opacity: 0, transform: 'translateY(12px)' },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], { duration: reduced() ? 0 : 650, delay: reduced() ? 0 : 700 + index * 90, fill: 'both' }));
+      await roll.finished;
+      roll.cancel();
+      shell.style.overflow = '';
+      shell.classList.remove('is-moving');
+      paper.querySelector('h2').focus({ preventScroll: true });
+      busy = false;
+    });
+    closeButton.addEventListener('click', async () => {
+      if (busy) return;
+      busy = true;
+      shell.classList.add('is-moving');
+      shell.style.overflow = 'hidden';
+      const roll = shell.animate([
+        { height: shell.getBoundingClientRect().height + 'px', opacity: 1 },
+        { height: '26px', opacity: 0.65 }
+      ], { duration: reduced() ? 0 : 1000, easing: 'cubic-bezier(.65,0,.75,.4)', fill: 'both' });
+      await roll.finished;
+      shell.hidden = true;
+      roll.cancel();
+      shell.style.overflow = '';
+      shell.classList.remove('is-moving');
+      contents.forEach(element => element.getAnimations().forEach(animation => animation.cancel()));
+      cover.hidden = false;
+      cover.classList.remove('opening');
+      button.disabled = false;
+      button.focus({ preventScroll: true });
+      busy = false;
+    });
+    return;
+  }
   button.addEventListener('click', () => {
     button.disabled = true;
     cover.classList.add('opening');
